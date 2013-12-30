@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>{title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{block:Description}
+<meta name="description" content="{MetaDescription}">
+{/block:Description}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="http://static.tumblr.com/wgahypw/tjemy4tlf/bootstrap01.css">
+<!-- google font -->
+<link href='http://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Life+Savers' rel='stylesheet' type='text/css'>
+<!-- /google font -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<style>
+body {
+  background: #FFF;
+}
+.top-header {
+  margin-top: 60px;
+}
+header h1 {
+    font-family: 'Bowlby One SC', cursive;
+}
+.date {
+ font-family: 'Life Savers', cursive;
+ font-size: 24px;
+}
+.like-reblog-buttons {
+  clear: both;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  list-style: none;
+  display: inline-block;
+ *display: inline;
+ *zoom: 1;
+  margin: 0 0 0 40px;
+  padding: 0;
+  overflow: hidden;
+}
+.like-reblog-buttons li {
+  float: left;
+  margin: 0;
+  padding: 7px 15px;
+  height: 32px;
+}
+.like-reblog-buttons li:first-child {
+  border-right: 1px solid #dddddd;
+}
+.sns-icons {
+  overflow:hidden;
+}
+.sns-icons li {
+  float: left;
+  margin-left: 0;
+  padding-right: 10px;
+  list-style: none;
+}
+.video-wrap {
+  position: relative;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+  padding-top: 69px;
+  padding-bottom: 50%;
+  overflow: hidden;
+}
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.cb {
+  clear: both;
+}
+.media-ul {
+  list-style: none; 
+}
+.media {
+  margin-bottom: 12px;
+}
+.post-footer {
+  margin: 24px 0 12px;
+}
+.post-info{
+  color: #100964;
+}
+.date {
+    margin: 12px 0;
+}
+.sidebar {
+  margin: 12px 0;
+}
+</style>
+<!-- Include social buttons -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=491469110965765";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async></script>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<!-- /Include social buttons -->
+<!-- google analytics -->
+<script>
+
+
+</script>
+<!-- /google analytics -->
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-default navbar-static-top visible-xs visible-sm visible-md">
+    <div class="container"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="/">ホーム</a> </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/archive">archive</a></li>
+          <li><a href="/link">link</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+  </nav>
+  <div class="container">
+    <div class="page-header top-header text-center">
+      <h1><a href="/">{title}</a></h1>
+      {block:Description}
+      <p>{Description}</p>
+    </div>
+    {/block:Description} </div>
+</header>
+<div class="container">
+<div class="row">
+  <div class="col-lg-8">
+    <section>
+    <div id="main"> 
+      <!-- Tag ページの見出し --> 
+      {block:TagPage}
+      <h2>Posts tagged "{Tag}"</h2>
+      {/block:TagPage} 
+      <!-- 投稿 --> 
+      {block:Posts}
+      <article class="{TagsAsClasses} {PostType}">
+      {block:Date}
+      <div class="date"> {block:NewDayDate} <a href="{Permalink}">
+ {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} </a>
+ {/block:NewDayDate}{block:SameDayDate} <a href="{Permalink}">
+{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero} </a> 
+{/block:SameDayDate} </div>
+{/block:Date} 
+      
+      <!-- post: テキスト --> 
+      {block:Text}
+      <header> {block:Title}
+        <h1><a href="{Permalink}">{Title}</a></h1>
+        {/block:Title} </header>
+      <div> {Body} </div>
+      {/block:Text} 
+      
+      <!-- post: 画像 --> 
+      {block:Photo}
+      <div> {LinkOpenTag} <img class="img-responsive" src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/> {LinkCloseTag}
+        {block:Caption}
+        <div> {Caption} </div>
+        {/block:Caption} </div>
+      {/block:Photo} 
+      
+      <!-- post: フォトセット --> 
+      {block:Photoset}
+        {block:Caption}
+        {Caption} 
+        {/block:Caption} 
+      <div> {Photoset-500}</div>
+      {/block:Photoset} 
+      
+      <!-- post: 引用 --> 
+      {block:Quote}
+      <div class="{Length}">
+        <blockquote>“{Quote}”</blockquote>
+        {block:Source}
+        <div> {Source} </div>
+        {/block:Source} </div>
+      {/block:Quote} 
+      
+      <!-- post: リンク --> 
+      {block:Link}
+      <header>
+        <h1> <a href="{URL}" class="link-url" {Target}>{Name}</a> </h1>
+      </header>
+      <div> {block:Description}
+        <div>{Description}</div>
+        {/block:Description} </div>
+      {/block:Link} 
+      
+      <!-- post: チャット --> 
+      {block:Chat}
+      <div> {block:Title}
+        <h1><a href="{Permalink}">{Title}</a></h1>
+        {/block:Title}
+        <ul>
+          {block:Lines}
+          <li class="{Alt} user_{UserNumber}"> {block:Label} <span>{Label}</span> {/block:Label}
+            {Line} </li>
+          {/block:Lines}
+        </ul>
+      </div>
+      {/block:Chat} 
+      
+      <!-- post: ビデオ --> 
+      {block:Video}
+        {block:Caption}
+        {Caption} 
+        {/block:Caption} 
+      <div class="video-wrap"> {Video-700}</div>
+      {/block:Video} 
+      
+      <!-- post: オーディオ --> 
+      {block:Audio}
+      <div> {AudioPlayerBlack}
+        {block:Caption}
+        <div> {Caption} </div>
+        {/block:Caption} </div>
+      {/block:Audio} 
+      
+      <!-- post: Answer --> 
+      {block:Answer}
+      <div class="entry-content">
+        <div class="question bubble"> {Question} </div>
+        <div class="asker-group"> <img src="{AskerPortraitURL-24}" width="24" height="24" /> {Asker} </div>
+        <div class="answer cont">{Answer}</div>
+      </div>
+      {/block:Answer} 
+      
+      <!-- Content Source --> 
+      {block:ContentSource}
+      <div class="cont content_source"> <a href="{SourceURL}"> {lang:Source}:
+        {block:SourceLogo} <img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" /> {/block:SourceLogo}
+        {block:NoSourceLogo}
+        {SourceTitle}
+        {/block:NoSourceLogo} </a> </div>
+      {/block:ContentSource} 
+      
+      <!-- 記事フッタ -->
+      <footer class="post-footer">
+ <div class="post-info">{block:RebloggedFrom} <span>リブログ from <a href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-16}" class="favicon"/> {ReblogParentName}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+        オリジナル posted by <a href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-16}" class="favicon"/> {ReblogRootName}</a> </span> {/block:RebloggedFrom}
+              <div> <span> <a href="{Permalink}">{TimeAgo}</a> </span> {block:NoteCount}
+        &nbsp;&nbsp;&nbsp;&nbsp; <span> <a href="{Permalink}">{NoteCount} Notes</a> </span> {/block:NoteCount}
+        {block:HasTags}
+        &nbsp;&nbsp;&nbsp;&nbsp; <span> {block:Tags}<a href="{TagURL}">#{Tag}</a> {/block:Tags} </span>  </div>
+{/block:HasTags}
+        <ul class="sns-icons">
+          <li>
+            <div class="fb-like" data-href="{permalink}" data-send="false" data-layout="button_count" data-show-faces="false" data-font="arial">
+          </li>
+          <li><a href="http://b.hatena.ne.jp/entry/{Permalink}" class="hatena-bookmark-button" data-hatena-bookmark-title="{Title}" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+          <li>
+            <g:plusone size="medium" href="{Permalink}"></g:plusone>
+          </li>
+          <li><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a></li>
+        </ul>
+        <ul class="like-reblog-buttons">
+          <li>{ReblogButton size="16"}</li>
+          <li>{LikeButton size="16"}</li>
+        </ul>
+        {block:PostNotes}
+        <div>{PostNotes}</div>
+        {/block:PostNotes}
+        </footer>
+        </article>
+        <hr>
+        {/block:Posts} </div>
+      </section>
+      
+      <!-- index のページャ --> 
+      {block:Pagination}
+      <ul class="pager">
+        {block:PreviousPage}
+        <li class="previous"><a href="{PreviousPage}">Prev</a> {/block:PreviousPage}</li>
+        {block:NextPage}
+        <li class="next"><a href="{NextPage}">Next</a> {/block:NextPage}</li>
+      </ul>
+      <hr>
+      {/block:Pagination} 
+      
+      <!-- パーマリンクのページャ --> 
+      {block:PermalinkPagination}
+      <ul class="pager">
+      {block:PreviousPost}
+      <li class="previous"><a href="{PreviousPost}">Prev</a> {/block:PreviousPost}</li>
+        {block:NextPost}
+      <li class="next"><a href="{NextPost}">Next</a> {/block:NextPost}</li>
+      </ul>
+      <hr>
+      {/block:PermalinkPagination} 
+      </div>
+    <div class="col-lg-4 sidebar">
+      <div class="list-group">
+        <p class="list-group-item active">リンク</p>
+        <a class="list-group-item" href="/archive">archive</a> <a class="list-group-item" href="http://webryy.com/">webryy.com</a>  </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <ul class="media-ul">
+          <li>
+            <div class="media">
+            <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/100x100" alt="..."> </a>
+            <div class="media-body">
+              <h4 class="media-heading">Media heading</h4>
+              <p>テキストテキストテキスト</p>
+            </div>
+          </li>
+          <li>
+            <div class="media">
+            <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/100x100" alt="..."> </a>
+            <div class="media-body">
+              <h4 class="media-heading">Media heading</h4>
+              <p>テキストテキストテキスト</p>
+            </div>
+          </li>
+          <li>
+            <div class="media">
+            <a class="pull-left" href="#"> <img class="media-object" src="http://placehold.it/100x100" alt="..."> </a>
+            <div class="media-body">
+              <h4 class="media-heading">Media heading</h4>
+              <p>テキストテキストテキスト</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-3 col-md-4">
+        <ul class="nav nav-list">
+          <li>リンク</li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-3 col-md-4">
+        <ul class="nav nav-list">
+          <li>リンク</li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+          <li><a href="#">link</a></li>
+        </ul>
+      </div>
+    </div>
+    <div> <small>Copyright (c) <a href="/">{title}</a> All Rights Reserved.</small> <small class="pull-right">tumblr theme <a href="http://webryy.com/kryptonite/">Kryptonite</a>. produced by <a href="http://webryy.com/">webryy.com</a></small> </div>
+  </div>
+</footer>
+<script>
+    $(function () {
+      // fitvids
+      $(".video-iframe").fitVids();
+    });
+  </script> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="https://code.jquery.com/jquery.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="http://static.tumblr.com/wgahypw/a4Smy4v16/bootstrap.min.js"></script>
+</body>
+</html>
